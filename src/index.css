@@ -1,0 +1,152 @@
+/* General styles */
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.login-section .error {
+  color: red;
+  font-size: 0.8rem;
+  margin-left: 10px;
+}
+
+:root {
+  --blue: navy;
+  --purple: purple;
+}
+
+.container {
+  margin: 0 auto;
+  width: 90%;
+  overflow: hidden;
+}
+
+/* Login page styles */
+
+.login-section {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+
+  @media (max-width: 680px) {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+}
+
+.login-section aside {
+  width: 50%;
+  @media (max-width: 680px) {
+    width: 100%;
+  }
+}
+
+.login-section aside .form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.login-section aside:nth-child(2) {
+  background-image: url(../public/img/login-img.png);
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.login-section .icon {
+  color: var(--blue);
+  font-size: 3rem;
+}
+
+.login-section h1 {
+  font-size: 2.5rem;
+  margin: 10px 0 3px;
+  color: rgb(5, 5, 43);
+}
+
+.login-section .loginEnter {
+  margin-bottom: 20px;
+  color: rgb(120, 121, 134);
+}
+
+.login-section form label {
+  display: block;
+}
+
+.login-section form label p {
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin: 10px 0 5px;
+  color: rgb(5, 5, 43);
+}
+
+.login-section form input[type="text"],
+.login-section form input[type="password"],
+.login-section form select {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 7px;
+  border: none;
+  box-shadow: 0 0 3px rgb(48, 47, 47);
+  outline: none;
+}
+
+.login-section form input[type="text"]:focus,
+.login-section form input[type="password"]:focus,
+.login-section form select:focus {
+  outline: 2px solid var(--purple);
+}
+
+.login-section form label p span {
+  color: red;
+  font-size: 1rem;
+}
+
+.login-section form .remember {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+  align-items: center;
+  font-weight: bold;
+  color: black;
+}
+
+.login-section form .remember p {
+  color: var(--purple);
+  cursor: pointer;
+}
+
+.login-section form button {
+  width: 100%;
+  padding: 10px;
+  background-color: var(--blue);
+  border: none;
+  border-radius: 7px;
+  color: white;
+  margin: 30px auto;
+  display: block;
+  transition: all 0.5s ease-in-out;
+}
+
+.login-section form h4 {
+  text-align: center;
+}
+
+.login-section form h4 span {
+  color: var(--purple);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.login-section form h4 span:hover,
+.login-section form .remember p:hover {
+  color: var(--blue);
+}
+
+.login-section form button:hover {
+  background-color: var(--purple);
+}
