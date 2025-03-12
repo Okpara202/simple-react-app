@@ -67,6 +67,11 @@ function Login() {
     navigate("/dashboard");
   };
 
+  const falseLink = () => {
+    // for feedback on forgot password and register here
+    alert("Feature currently unavailable");
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Handle name and password state change
     e.preventDefault();
@@ -136,12 +141,13 @@ function Login() {
               <label>
                 <input type="checkbox" name="" id="" /> Remember me
               </label>
-              <p>Forgot password</p>
+              <p onClick={falseLink}>Forgot password</p>
             </div>
             <button>Log in</button>
 
             <h4>
-              Don't have an account? <span>Register here</span>
+              Don't have an account?{" "}
+              <span onClick={falseLink}>Register here</span>
             </h4>
           </form>
         </div>
