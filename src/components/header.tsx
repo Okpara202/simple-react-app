@@ -1,7 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { IoIosApps } from "react-icons/io";
-import { FaBars, FaBook } from "react-icons/fa";
-import { FaBookBible } from "react-icons/fa6";
+import { FaBars } from "react-icons/fa";
 
 function Header({
   user,
