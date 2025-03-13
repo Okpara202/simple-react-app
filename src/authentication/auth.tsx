@@ -18,12 +18,19 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const [role, setRole] = useState<string | null>(null);
 
   const login = (userName: string, userRole: string) => {
+    // login function
     setUser(userName);
     setRole(userRole);
   };
 
   const logout = () => {
+    // Logout function
     setUser(null);
+    setRole(null);
+
+    // clear local storage from persisiting state
+    localStorage.removeItem("name");
+    localStorage.removeItem("role");
   };
 
   return (

@@ -1,68 +1,54 @@
-import { useRef, useState } from "react";
 import { IoIosApps } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../authentication/auth";
+import { ZodType, z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+// Form input type
+type FormData = {
+  name: string;
+  role: string;
+  password: string;
+};
 
 function Login() {
   // navigate programatically to dashboard
   const navigate = useNavigate();
 
-  // Create Refs for input form focusing
-  const nameRef = useRef<HTMLInputElement | null>(null);
-  const roleRef = useRef<HTMLSelectElement | null>(null);
-  const passwordRef = useRef<HTMLInputElement | null>(null);
-
-  // Handle Errors
-  const [nameError, setNameError] = useState<string>("");
-  const [roleError, setRoleError] = useState<string>("");
-  const [passwordError, setPasswordError] = useState<string>("");
-
-  // Handle name and password state
-  const [form, setForm] = useState({
-    name: "",
-    password: "",
-  });
-
-  // Handle role state
-  const [role, setRole] = useState<string>("");
-
   // Handle role based Authentication
   const { login } = useAuth();
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  //Create form validation schema
+  const formSchema: ZodType<FormData> = z.object({
+    name: z
+      .string()
+      .min(1, { message: "Name cannot be empty" })
+      .min(4, { message: "Enter your full name" })
+      .trim(),
+    role: z.string().min(1, { message: "Select a valid role" }).trim(),
+    password: z
+      .string()
+      .min(1, { message: "Password cannont be empty" })
+      .min(8, { message: "Password can't be less than 8" })
+      .trim(),
+  });
+
+  // Link Zod validation to react hook form
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({ resolver: zodResolver(formSchema) });
+
+  const submitForm = (data: FormData) => {
     // Submit function
-    e.preventDefault();
 
-    // Validate name
-    if (form.name === "") {
-      setNameError("Name cannont be empty");
-      nameRef.current?.focus();
-      return;
-    } else if (form.name.length < 4) {
-      setNameError("Enter your real name");
-      nameRef.current?.focus();
-      return;
-    }
+    // store the data in local storage to allow for persisting state
+    localStorage.setItem("name", data.name);
+    localStorage.setItem("role", data.role);
 
-    // Validate role
-    if (role === "") {
-      setRoleError("Select a valid role");
-      roleRef.current?.focus();
-      return;
-    }
-
-    // Validate password
-    if (form.password === "") {
-      setPasswordError("Enter your password");
-      passwordRef.current?.focus();
-      return;
-    } else if (form.password.length < 8) {
-      setPasswordError("Password cannot be less than 8");
-      passwordRef.current?.focus();
-      return;
-    }
-
-    login(form.name, role);
+    login(data.name, data.role);
 
     navigate("/dashboard");
   };
@@ -70,15 +56,6 @@ function Login() {
   const falseLink = () => {
     // for feedback on forgot password and register here
     alert("Feature currently unavailable");
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // Handle name and password state change
-    e.preventDefault();
-    const { type, name, value, checked } = e.target;
-    setForm((prevState) => {
-      return { ...prevState, [name]: type === "checkbox" ? checked : value };
-    });
   };
 
   return (
@@ -90,51 +67,42 @@ function Login() {
           </h1>
           <h1>Welcome back !</h1>
           <p className="loginEnter">Enter the correct information to login</p>
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit(submitForm)}>
             <label>
               <p>
                 Name <span>*</span>
               </p>
               <input
-                ref={nameRef}
                 type="text"
-                name="name"
-                value={form.name}
-                onChange={handleChange}
+                {...register("name")}
                 placeholder="Enter your full name"
               />
-              {nameError && <p className="error">{nameError}</p>}
+              {errors?.name && <p className="error">{errors.name.message}</p>}
             </label>
             <label>
               <p>
                 Role <span>*</span>
               </p>
-              <select
-                ref={roleRef}
-                name=""
-                value={role}
-                onChange={(e) => setRole(e.target.value)}
-              >
+              <select {...register("role")}>
                 <option value="">--Select your role--</option>
                 <option value="Admin">Admin</option>
                 <option value="Editor">Editor</option>
                 <option value="Viewer">Viewer</option>
               </select>
-              {roleError && <p className="error">{roleError}</p>}
+              {errors?.role && <p className="error">{errors.role.message}</p>}
             </label>
             <label>
               <p>
                 Password <span>*</span>
               </p>
               <input
-                ref={passwordRef}
                 type="password"
-                name="password"
-                value={form.password}
-                onChange={handleChange}
+                {...register("password")}
                 placeholder="Enter password"
               />
-              {passwordError && <p className="error">{passwordError}</p>}
+              {errors?.password && (
+                <p className="error">{errors.password.message}</p>
+              )}
             </label>
 
             <div className="remember">
