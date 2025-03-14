@@ -413,13 +413,18 @@ main section.section-1 button:hover {
 main .job {
   margin-top: 30px;
   margin-bottom: -10px;
-  padding: 0 20px;
+  padding-left: 20px;
   display: flex;
   align-items: center;
 }
 
-main .job h4 {
+main .job h4,
+main section.section-2 div aside:nth-child(1) {
   flex: 1;
+}
+
+main .job h4 span {
+  color: rgb(70, 96, 168);
 }
 
 main .job nav,
@@ -434,8 +439,9 @@ main section.section-2 div {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
-}
 
-main section.section-2 div aside:nth-child(1) {
-  flex: 1;
+  @media (max-width: 680px) {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
 }
