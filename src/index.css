@@ -67,10 +67,11 @@ header nav a {
   text-decoration: none;
   color: var(--purple);
   transition: all 0.5s ease-in-out;
+  font-weight: bold;
 
   @media (max-width: 680px) {
     display: block;
-    margin: 100px;
+    margin-top: 50px;
     font-size: 2rem;
     color: white;
   }
@@ -114,19 +115,24 @@ header nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-
   transition: all 1s;
   @media (max-width: 680px) {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     top: -1000px;
     right: 0;
     position: absolute;
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.8);
+    width: 50%;
   }
 }
 
-header nav a:hover {
+header nav a:hover,
+.active-link,
+.profileSection a:hover {
   color: gray;
   font-weight: bold;
   text-decoration: underline solid var(--blue) 3px;
@@ -259,4 +265,107 @@ header nav a:hover {
 
 .login-section form button:hover {
   background-color: var(--purple);
+}
+
+/* Dashboard section */
+
+/* Profile Section */
+
+.profileSection {
+  display: flex;
+  margin-top: 3vh;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (max-width: 900px) {
+    display: block;
+  }
+}
+
+.profileSection a {
+  color: white;
+}
+
+.profileSection aside:nth-child(1) {
+  background: linear-gradient(50deg, navy, lightblue);
+  padding: 50px 35px;
+  border-radius: 3rem;
+  color: rgb(189, 187, 187);
+  flex-basis: 50%;
+}
+
+.profileSection-1 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.profileSection-2 {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 20rem;
+}
+
+.profileSection-3 {
+  text-align: center;
+  margin-top: -50px;
+  line-height: 1.1;
+}
+
+.profileSection-3 h3 {
+  font-size: 2rem;
+  margin-bottom: 5px;
+  line-height: 1.3;
+  color: rgb(189, 187, 187);
+  color: white;
+  font-family: monospace;
+}
+
+.profileSection-4 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.5rem;
+  margin-top: 30px;
+
+  @media (max-width: 1200px) {
+    display: block;
+    text-align: center;
+  }
+
+  @media (max-width: 900px) {
+    display: flex;
+  }
+}
+
+.profileSection-3 span {
+  font-weight: bold;
+}
+
+.profileSection aside:nth-child(2) {
+  padding: 10px;
+  flex-basis: 50%;
+  margin-left: 30px;
+}
+
+.profileSection aside:nth-child(2) section {
+  display: flex;
+  margin-bottom: 10px;
+  padding: 30px;
+  border-bottom: 2px solid rgb(235, 232, 232);
+}
+
+.profileSection aside:nth-child(2) section div:nth-child(1) {
+  margin-right: 20px;
+  font-size: 1.2rem;
+}
+
+.profileSection aside:nth-child(2) section div:nth-child(2) p:nth-child(1) {
+  color: rgb(87, 86, 86);
+  margin-bottom: 15px;
+}
+
+.profileSection aside:nth-child(2) section div:nth-child(2) p:nth-child(2) {
+  font-weight: bold;
 }

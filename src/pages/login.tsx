@@ -1,5 +1,5 @@
 import { IoIosApps } from "react-icons/io";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../authentication/auth";
 import { ZodType, z } from "zod";
 import { useForm } from "react-hook-form";
@@ -13,6 +13,8 @@ type FormData = {
 };
 
 function Login() {
+  const [searchParams] = useSearchParams();
+  const protectedRoute = searchParams.get("message");
   // navigate programatically to dashboard
   const navigate = useNavigate();
 
@@ -24,13 +26,13 @@ function Login() {
     name: z
       .string()
       .min(1, { message: "Name cannot be empty" })
-      .min(4, { message: "Enter your full name" })
+      .min(4, { message: "Username must have more than 4 characters" })
       .trim(),
     role: z.string().min(1, { message: "Select a valid role" }).trim(),
     password: z
       .string()
-      .min(1, { message: "Password cannont be empty" })
-      .min(8, { message: "Password can't be less than 8" })
+      .min(1, { message: "Password cannot be empty" })
+      .min(8, { message: "Password can't be less than 8 characters" })
       .trim(),
   });
 
@@ -66,7 +68,11 @@ function Login() {
             <IoIosApps />
           </h1>
           <h1>Welcome back !</h1>
-          <p className="loginEnter">Enter the correct information to login</p>
+          {protectedRoute ? (
+            <p className="loginEnter">{protectedRoute}</p>
+          ) : (
+            <p className="loginEnter">Enter the correct information to login</p>
+          )}
           <form onSubmit={handleSubmit(submitForm)}>
             <label>
               <p>
@@ -75,7 +81,7 @@ function Login() {
               <input
                 type="text"
                 {...register("name")}
-                placeholder="Enter your full name"
+                placeholder="Enter Username"
               />
               {errors?.name && <p className="error">{errors.name.message}</p>}
             </label>

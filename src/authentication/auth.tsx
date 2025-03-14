@@ -6,6 +6,7 @@ interface AuthContextType {
   user: string | null;
   role: string | null;
   login(userName: string, userRole: string): void;
+  isAuthenticated: boolean;
   logout(): void;
 }
 
@@ -16,7 +17,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<string | null>(null);
   const [role, setRole] = useState<string | null>(null);
-
+  const isAuthenticated = localStorage.getItem("name") !== null ? true : false;
   const login = (userName: string, userRole: string) => {
     // login function
     setUser(userName);
@@ -27,14 +28,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     // Logout function
     setUser(null);
     setRole(null);
-
     // clear local storage from persisiting state
     localStorage.removeItem("name");
     localStorage.removeItem("role");
   };
 
   return (
-    <AuthContext.Provider value={{ user, role, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, user, role, login, logout }}
+    >
       {children}
     </AuthContext.Provider>
   );

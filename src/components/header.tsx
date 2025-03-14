@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoIosApps } from "react-icons/io";
 import { FaBars } from "react-icons/fa";
 
@@ -23,6 +23,7 @@ function Header({
   const show = () => {
     document.getElementById("nav")?.classList.toggle("show");
   };
+
   return (
     <header>
       <aside>
@@ -35,9 +36,26 @@ function Header({
         </div>
       </aside>
       <nav id="nav">
-        <Link to={""}>Dashboard</Link>
-        <Link to={""}>Profile</Link>
-        {role === "Admin" && <Link to={""}>Settings</Link>}
+        <NavLink
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+          to="/dashboard"
+        >
+          Dashboard
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+          to="/profile"
+        >
+          Profile
+        </NavLink>
+        {role === "Admin" && (
+          <NavLink
+            className={({ isActive }) => (isActive ? "active-link" : "")}
+            to={"/settings"}
+          >
+            Settings
+          </NavLink>
+        )}
         <button onClick={handleLogout}>Logout</button>
       </nav>
       <aside id="bar" className="bar" onClick={show}>

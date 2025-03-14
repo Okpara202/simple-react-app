@@ -7,13 +7,22 @@ import {
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
 import { AuthProvider } from "./authentication/auth";
+import Protected from "./components/protected";
+import Profile from "./pages/profile";
+import Settings from "./pages/settings";
 
 function App() {
   const router = createBrowserRouter(
     createRoutesFromElements(
       <>
         <Route path="/" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<Protected />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/settings" element={<Settings />} />
+        </Route>
+
+        {/* Catch all Route */}
       </>
     )
   );
