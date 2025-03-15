@@ -287,10 +287,11 @@ header nav a:hover,
 }
 
 .profileSection aside:nth-child(1) {
-  background: linear-gradient(50deg, navy, lightblue);
+  background: linear-gradient(to right, navy, rgb(1, 1, 180), rgb(3, 3, 250));
+
   padding: 50px 35px;
   border-radius: 3rem;
-  color: rgb(189, 187, 187);
+  color: gray;
   flex-basis: 50%;
 }
 

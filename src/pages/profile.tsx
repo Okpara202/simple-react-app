@@ -23,7 +23,7 @@ function Profile() {
     <section>
       <Header user={userName!} role={userRole!} logout={logout} />
 
-      <section className="profileSection container">
+      <section className="profileSection">
         <aside>
           <section className="profileSection-1">
             <Link to={"/dashboard"} title="back to dashboard">
