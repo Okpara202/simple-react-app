@@ -42,9 +42,9 @@ function Settings() {
             Jobs management
           </h4>
           <nav>
-            <p>Intern</p>
-            <p>Associate</p>
-            <p>Manager</p>
+            <p>Viewer</p>
+            <p>Editor</p>
+            <p>Admin</p>
           </nav>
         </div>
         <section className="section-2">
@@ -101,9 +101,9 @@ function Settings() {
             Candidate management
           </h4>
           <nav>
-            <p>Intern</p>
-            <p>Associate</p>
-            <p>Manager</p>
+            <p>Viewer</p>
+            <p>Editor</p>
+            <p>Admin</p>
           </nav>
         </div>
         <section className="section-2">
@@ -181,9 +181,9 @@ function Settings() {
             User management
           </h4>
           <nav>
-            <p>Intern</p>
-            <p>Associate</p>
-            <p>Manager</p>
+            <p>Viewer</p>
+            <p>Editor</p>
+            <p>Admin</p>
           </nav>
         </div>
         <section className="section-2">

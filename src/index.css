@@ -432,7 +432,12 @@ main .job nav,
 main section.section-2 div aside:nth-child(2) {
   display: flex;
   width: 250px;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  font-weight: 500;
+}
+
+main section.section-2 div aside:nth-child(2) input {
+  margin-left: 40px;
 }
 
 main section.section-2 div {
