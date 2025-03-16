@@ -278,7 +278,7 @@ header nav a:hover,
 }
 
 .dashboard-title {
-  font-size: 2.5em;
+  font-size: 2.5rem;
   color: #1a73e8;
   margin-bottom: 20px;
   text-align: center;
@@ -286,6 +286,7 @@ header nav a:hover,
 
 .dashboard-section {
   margin-bottom: 30px;
+  line-height: 1.5;
 }
 
 .grid {
@@ -486,6 +487,7 @@ button:hover {
 
 main {
   padding: 2px;
+  padding-bottom: 30px;
 }
 
 main section {
@@ -519,16 +521,23 @@ main section.section-1 button:hover {
 }
 
 main .job {
-  margin-top: 30px;
+  margin-top: 40px;
   margin-bottom: -10px;
   padding-left: 20px;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 main .job h4,
 main section.section-2 div aside:nth-child(1) {
+  display: flex;
+  align-items: center;
   flex: 1;
+}
+
+.arrow {
+  margin-left: 10px;
 }
 
 main .job h4 span {
@@ -552,7 +561,8 @@ main section.section-2 div {
   align-items: center;
   margin-top: 10px;
   margin-bottom: 10px;
-
+  padding: 10px 0;
+  border-bottom: 1.5px solid rgb(197, 193, 193);
   @media (max-width: 680px) {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -570,6 +580,7 @@ main section.section-2 div {
   background-color: rgb(233, 233, 233);
   color: rgb(59, 59, 59);
   line-height: 2;
+  padding: 0 20px;
 }
 
 .notFound h1 {
@@ -587,5 +598,7 @@ main section.section-2 div {
 
 .notFound p {
   margin-top: 15px;
-  font-family: 500px;
+  font-family: 550px;
+  text-align: center;
+  line-height: 1.5;
 }
