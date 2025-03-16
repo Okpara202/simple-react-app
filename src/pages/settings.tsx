@@ -23,7 +23,7 @@ function Settings() {
   const { logout } = useAuth();
 
   if (userRole !== "Admin") {
-    <Navigate to="/dashboard" />;
+    return <Navigate to="/dashboard" />;
   }
 
   return (

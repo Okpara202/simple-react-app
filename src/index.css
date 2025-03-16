@@ -310,13 +310,21 @@ header nav a:hover,
   margin-bottom: 10px;
 }
 
-ul {
-  list-style: none;
-  padding: 0;
+.dashboard ul {
+  padding: 0 15px;
 }
 
-ul li {
-  padding: 5px 0;
+.dashboard ul li {
+  padding: 5px 10px;
+  list-style-position: inside;
+  text-decoration: underline;
+}
+
+.dashboard ul li:hover {
+  cursor: pointer;
+  color: var(--blue);
+  font-weight: bold;
+  text-decoration-color: var(--blue);
 }
 
 .dashboard button {
